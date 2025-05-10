@@ -1,13 +1,16 @@
-# `zero-one-xxx`
+# `zero-one-community`
 
-xxx相关概念参考：
+物业管理相关概念参考：
 
-- 
-- 
+- https://zh.wikipedia.org/zh-my/%E7%89%A9%E6%A5%AD%E7%AE%A1%E7%90%86
+- https://baike.baidu.com/item/%E7%89%A9%E4%B8%9A%E7%AE%A1%E7%90%86/450
+- http://www.gov.cn/gongbao/content/2016/content_5139402.htm
 
 ## 项目简介
 
+**零壹社区**是一款社区管理系统，目标在于：打造一套数字化智能物业管理系统，帮助物业公司最大程度降本增效；打造智慧社区，提供丰富的社区增值服务，便利于业主，提升住家幸福感；逐步打造`IoT`智能物联系统，多样化硬件对接，整合硬件设备，打破设备信息孤岛，实现智能互联；提供商家入驻，构建社区商城系统。
 
+功能蓝图涵盖：房产、业主、 线上缴费、线上报修、投诉建议、采购、巡检、停车、门径、道闸、监控、工作流、问卷和公告等等。
 
 ## 系统架构图
 
@@ -16,7 +19,7 @@ xxx相关概念参考：
 ![architecture](./documents/00、preview-pic/architecture.jpg)
 
 ## 项目结构说明
-> `zero-one-xxx`  
+> `zero-one-community`  
 >
 > > `.gitignore` -- 忽略提交配置
 > >
@@ -24,11 +27,11 @@ xxx相关概念参考：
 > >
 > > `documents` -- 环境搭建、编码规范、项目需求等等文档资源
 > >
-> > `xxx-java` -- `Java`项目主体
+> > `comm-java` -- `Java`项目主体
 > >
-> > `xxx-cpp` -- `C++`项目主体
+> > `comm-cpp` -- `C++`项目主体
 > >
-> > `xxx-frontend` -- 前端项目主体
+> > `comm-frontend` -- 前端项目主体
 
 ## 软件架构
 
@@ -188,7 +191,7 @@ https://docs.spring.io/spring-data/mongodb/docs/current/reference/html/#requirem
 
 ## 特别鸣谢
 
-`zero-one-xxx`的诞生离不开开源软件和社区的支持，感谢以下开源项目及项目维护者：
+`zero-one-community`的诞生离不开开源软件和社区的支持，感谢以下开源项目及项目维护者：
 
 - `spring`：https://github.com/spring-projects
 - `alibaba`：https://github.com/alibaba
