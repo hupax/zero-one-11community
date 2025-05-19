@@ -12,6 +12,7 @@ import com.zeroone.star.sample.service.ISampleService;
 import com.zeroone.star.sample.service.impl.MsSampleMapper;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -27,6 +28,7 @@ import javax.annotation.Resource;
  */
 @RestController
 @RequestMapping("/sample")
+@Validated
 public class SampleController implements SampleApis {
     // 呼叫service
     @Resource
@@ -38,7 +40,7 @@ public class SampleController implements SampleApis {
     @PostMapping("/add-sample")
     @ApiOperation(value = "添加示例")
     @Override
-    public JsonVO<String> addSample(@RequestBody SampleAddDTO addDto) {
+    public JsonVO<String> addSample(@Validated @RequestBody SampleAddDTO addDto) {
         Sample sample = ms.addDtoToDo(addDto);
         if (service.save(sample)) {
             return JsonVO.success(sample.getId());
@@ -49,7 +51,7 @@ public class SampleController implements SampleApis {
     @PutMapping("/modify-sample")
     @ApiOperation(value = "修改示例")
     @Override
-    public JsonVO<String> modifySample(@RequestBody SampleDTO dto) {
+    public JsonVO<String> modifySample(@Validated @RequestBody SampleDTO dto) {
         if (service.updateById(ms.dtoTodo(dto))) {
             return JsonVO.success(dto.getId());
         }
@@ -59,7 +61,7 @@ public class SampleController implements SampleApis {
     @GetMapping("/query-all")
     @ApiOperation(value = "分页查询示例")
     @Override
-    public JsonVO<PageDTO<SampleDTO>> queryAll(SampleQuery condition) {
+    public JsonVO<PageDTO<SampleDTO>> queryAll(@Validated SampleQuery condition) {
         return JsonVO.success(service.listAll(condition));
     }
     
