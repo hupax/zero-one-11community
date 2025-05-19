@@ -40,6 +40,7 @@
         <module>comm-doc</module>
         <module>comm-sample</module>
         <module>comm-sample-captcha</module>
+        <module>comm-sample-cpp</module>
     </modules>
     <properties>
         <!-- 打包的时候忽略测试案例调用 -->
