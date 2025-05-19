@@ -44,4 +44,4 @@ target
 # Maven ignore
 .flattened-pom.xml
 .gitignore
-*/DS_Store
+**/.DS_Store

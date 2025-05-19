@@ -39,6 +39,7 @@
         <module>comm-login</module>
         <module>comm-doc</module>
         <module>comm-sample</module>
+        <module>comm-sample-captcha</module>
     </modules>
     <properties>
         <!-- 打包的时候忽略测试案例调用 -->
