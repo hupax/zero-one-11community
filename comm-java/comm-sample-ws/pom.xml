@@ -38,12 +38,17 @@
             <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
         </dependency>
         <!-- 注册服务中心 -->
+
         <dependency>
             <groupId>com.alibaba.cloud</groupId>
             <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
         </dependency>
 
-
+        <!-- rocket mq -->
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-stream-rocketmq</artifactId>
+        </dependency>
 
     </dependencies>
     <build>

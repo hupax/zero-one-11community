@@ -101,4 +101,21 @@ public class ChatServer {
             }
         }
     }
+    
+    public void sendMessage(String id, String msg) throws IOException {
+        //群发消息 ID=all表示群发
+        if ("all".equalsIgnoreCase(id)) {
+            for (Session one : SESSION_POOL.values()) {
+                //发送消息
+                one.getBasicRemote().sendText(JSONUtil.toJsonStr(msg));
+            }
+        }
+        //指定发送
+        else {
+            Session target = SESSION_POOL.get(id);
+            if (target != null) {
+                target.getBasicRemote().sendText(JSONUtil.toJsonStr(msg));
+            }
+        }
+    }
 }
