@@ -42,6 +42,7 @@
         <module>comm-sample-captcha</module>
         <module>comm-sample-cpp</module>
         <module>comm-sample-ws</module>
+        <module>comm-sample-publish</module>
     </modules>
     <properties>
         <!-- 打包的时候忽略测试案例调用 -->

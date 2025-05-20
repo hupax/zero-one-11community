@@ -8,7 +8,7 @@
         <version>${revision}</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
-    <artifactId>comm-sample-captcha</artifactId>
+    <artifactId>comm-sample-publish</artifactId>
     <dependencies>
         <!-- spring mvc -->
         <dependency>
@@ -25,6 +25,11 @@
             <groupId>com.zeroone.star</groupId>
             <artifactId>comm-common</artifactId>
         </dependency>
+        <!-- domain -->
+        <dependency>
+            <groupId>com.zeroone.star</groupId>
+            <artifactId>comm-domain</artifactId>
+        </dependency>
         <!-- nacos 相关 -->
         <!-- alibaba nacos config -->
         <dependency>
@@ -36,15 +41,10 @@
             <groupId>com.alibaba.cloud</groupId>
             <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
         </dependency>
-        <!-- captcha -->
+        <!-- rocketmq -->
         <dependency>
-            <groupId>com.anji-plus</groupId>
-            <artifactId>spring-boot-starter-captcha</artifactId>
-        </dependency>
-        <!-- redis -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-redis</artifactId>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-stream-rocketmq</artifactId>
         </dependency>
 
     </dependencies>
@@ -54,7 +54,7 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
-                    <mainClass>com.zeroone.star.captcha.PublishApplication</mainClass>
+                    <mainClass>com.zeroone.star.publish.PublishApplication</mainClass>
                 </configuration>
             </plugin>
         </plugins>

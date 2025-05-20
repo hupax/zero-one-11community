@@ -1,0 +1,6 @@
+# 应用名称
+server:
+  port: ${sp.publish}
+spring:
+  application:
+    name: ${sn.publish}
