@@ -1,76 +1,66 @@
-package com.zeroone.star.sample.controller;
+package com.zeroone.star.cpp.controller;
 
 
+import cn.hutool.core.bean.BeanUtil;
+import com.zeroone.star.cpp.service.ISampleService;
+import com.zeroone.star.project.cpp.SampleApis;
 import com.zeroone.star.project.dto.PageDTO;
-import com.zeroone.star.project.dto.sample.SampleAddDTO;
-import com.zeroone.star.project.dto.sample.SampleDTO;
-import com.zeroone.star.project.query.sample.SampleQuery;
-import com.zeroone.star.project.sample.SampleApis;
+import com.zeroone.star.project.dto.cpp.SampleDTO;
+import com.zeroone.star.project.query.cpp.SampleQuery;
 import com.zeroone.star.project.vo.JsonVO;
-import com.zeroone.star.sample.entity.Sample;
-import com.zeroone.star.sample.service.ISampleService;
-import com.zeroone.star.sample.service.impl.MsSampleMapper;
-import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * <p>
- * 演示示
-例表 前端控制器
+ * 演示示例表 前端控制器
  * </p>
- *
- * @author zhirepan
- * @since 2025-05-19
+ * @author 阿伟
+ * @since 2025-05-11
  */
 @RestController
-@RequestMapping("/sample")
-@Validated
+@RequestMapping("/cpp")
 public class SampleController implements SampleApis {
-    // 呼叫service
+
     @Resource
     ISampleService service;
-    
-    @Resource
-    MsSampleMapper ms;
-    
-    @PostMapping("/add-sample")
+
+    @GetMapping("/query")
+    @ApiOperation(value = "分页查询")
+    @Override
+    public JsonVO<PageDTO<SampleDTO>> queryAll(SampleQuery condition) {
+        return service.listAll(BeanUtil.beanToMap(condition, false, true));
+    }
+
+    @PostMapping("/add")
     @ApiOperation(value = "添加示例")
     @Override
-    public JsonVO<String> addSample(@Validated @RequestBody SampleAddDTO addDto) {
-        Sample sample = ms.addDtoToDo(addDto);
-        if (service.save(sample)) {
-            return JsonVO.success(sample.getId());
-        }
-        return JsonVO.fail(null);
+    public JsonVO<String> addData(SampleDTO dto) {
+        return service.saveData(dto);
     }
-    
-    @PutMapping("/modify-sample")
+
+    @PutMapping("/modify")
     @ApiOperation(value = "修改示例")
     @Override
-    public JsonVO<String> modifySample(@Validated @RequestBody SampleDTO dto) {
-        if (service.updateById(ms.dtoTodo(dto))) {
-            return JsonVO.success(dto.getId());
+    public JsonVO<String> modifyData(SampleDTO dto) {
+        return service.modifyData(dto);
+    }
+
+    @PutMapping("/remove")
+    @ApiOperation(value = "修改示例")
+    @Override
+    public JsonVO<String> removeData(String id) {
+        ArrayList<String> ids = new ArrayList<>();
+        ids.add(id);
+        JsonVO<List<String>> listJsonVO = service.removeData(ids);
+        if (listJsonVO.getData().isEmpty()) {
+            return JsonVO.fail(null);
         }
-        return JsonVO.fail(null);
-    }
-    
-    @GetMapping("/query-all")
-    @ApiOperation(value = "分页查询示例")
-    @Override
-    public JsonVO<PageDTO<SampleDTO>> queryAll(@Validated SampleQuery condition) {
-        return JsonVO.success(service.listAll(condition));
-    }
-    
-    @GetMapping("/query-one")
-    @ApiOperation(value = "编号查询")
-    @ApiImplicitParam(name = "id", value = "编号", required = true, example = "11")
-    @Override
-    public JsonVO<SampleDTO> queryById(String id) {
-        return JsonVO.success(service.getById(id));
+        return JsonVO.success(listJsonVO.getData().get(0));
     }
 }
 
